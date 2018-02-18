@@ -1,0 +1,204 @@
+﻿<Window x:Class="Calc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calc"
+            xmlns:persns="clr-namespace:Calc.ViewModel"
+     
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1024" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="2,5,2,2"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"></Style>
+    </Window.Resources>
+
+
+    <Window.DataContext>
+        <persns:PersonViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="True" Grid.RowSpan="2">
+            <Menu DockPanel.Dock="Top">
+
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" />
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Save" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+
+            </Menu>
+
+
+
+            <Border Grid.Row="0" BorderThickness="2" BorderBrush="Gray" Margin="10,10,10,10" Padding="5" CornerRadius="5" DockPanel.Dock="Left">
+                <Grid Margin="0,8,0,0"  >
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="150"  />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Vorname:</Label>
+                    <TextBox Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Height="22" />
+
+                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Nachname:</Label>
+                    <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="22" />
+
+
+                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Geburtsdatum:</Label>
+                    <DatePicker Grid.Column="1" Grid.Row="2" Margin="2"/>
+
+
+                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">Adresse:</Label>
+                    <TextBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"  Height="22">Musterstrasse 1</TextBox>
+
+                    <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">Wohnort:</Label>
+                    <TextBox Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  Height="22">Wien</TextBox>
+
+                    <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">Telefon:</Label>
+                    <TextBox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"  Height="22">066412345678</TextBox>
+
+                    <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">Email:</Label>
+                    <TextBox Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"  Height="22">max.mustermann@gmail.com</TextBox>
+
+
+                    <Label Grid.Column="0" Grid.Row="7" VerticalAlignment="Center">Eintrittsdatum:</Label>
+                    <DatePicker Grid.Column="1" Grid.Row="7" Margin="2"/>
+                    <Label Grid.Column="0" Grid.Row="8" VerticalAlignment="Center">Austrittsdatum:</Label>
+                    <DatePicker  Grid.Column="1" Grid.Row="8" Margin="2"/>
+
+                    <Label  Grid.Column="0" Grid.Row="9" VerticalAlignment="Center">Urlaubstage konsumiert:</Label>
+                    <TextBox  Grid.Column="1" Grid.Row="9"  VerticalAlignment="Center" Height="22">0</TextBox>
+
+                    <Label  Grid.Column="0" Grid.Row="10" VerticalAlignment="Center">Gehalt brutto:</Label>
+                    <TextBox  Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Height="22">0</TextBox>
+
+                    <Label  Grid.Column="0" Grid.Row="11" VerticalAlignment="Center">Offener Zeitausgleich [h]:</Label>
+                    <TextBox  Grid.Column="1" Grid.Row="11"  VerticalAlignment="Center" Height="22">0</TextBox>
+
+                    <Label  Grid.Column="0" Grid.Row="12" VerticalAlignment="Center">Kollektivvertrag:</Label>
+                    <ComboBox Text="Is not open" Grid.Column="1" Grid.Row="12">
+                        <ComboBoxItem Name="cbi1">KV1</ComboBoxItem>
+                        <ComboBoxItem Name="cbi2">KV2</ComboBoxItem>
+                        <ComboBoxItem Name="cbi3">KV3</ComboBoxItem>
+                    </ComboBox>
+
+                    <Button x:Name="Btn_Calculate" Content="{Binding ButtonContent}" Command="{Binding Calculate}" Grid.Row="13" Margin="5,25,20,2" /> 
+
+                </Grid>
+            </Border>
+
+            <TabControl Height="Auto" Width="Auto" DockPanel.Dock="Right" Margin="10">
+                <TabItem Header="Gehalt">
+                    <Grid Margin="0,8,0,0"  >
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  />
+                            <ColumnDefinition   />
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Jahresbezug-->
+                        <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold">Jahresbezug</Label>
+
+                        <Label Grid.Row="1" Grid.Column="0" Margin="30,2,5,2">Brutto</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="30,2,5,2">1000 €</TextBox>
+
+                        <Label Grid.Row="2" Grid.Column="0"  Margin="30,2,5,2">Sozialversicherung</Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="30,2,5,2" >1000 €</TextBox>
+
+                        <Label Grid.Row="3" Grid.Column="0"  Margin="30,2,5,2">Lohnsteuer</Label>
+                        <TextBox Grid.Row="3" Grid.Column="1"  Margin="30,2,5,2">1000 €</TextBox>
+
+                        <Label Grid.Row="4" Grid.Column="0"  Margin="30,2,5,2">Netto</Label>
+                        <TextBox Grid.Row="4" Grid.Column="1"  Margin="30,2,5,2">1000 €</TextBox>
+
+                        <!-- Laufender Bezug-->
+                        <Label Grid.Row="5" Grid.Column="0" FontWeight="Bold">Laufender Bezug</Label>
+
+                        <Label Grid.Row="6" Grid.Column="0" Margin="30,2,5,2">Brutto</Label>
+                        <TextBox Grid.Row="6" Grid.Column="1" Margin="30,2,5,2">1000 €</TextBox>
+
+                        <Label Grid.Row="7" Grid.Column="0"  Margin="30,2,5,2">Sozialversicherung</Label>
+                        <TextBox Grid.Row="7" Grid.Column="1" Margin="30,2,5,2" >1000 €</TextBox>
+
+                        <Label Grid.Row="8" Grid.Column="0"  Margin="30,2,5,2">Lohnsteuer</Label>
+                        <TextBox Grid.Row="8" Grid.Column="1"  Margin="30,2,5,2">1000 €</TextBox>
+
+                        <Label Grid.Row="9" Grid.Column="0"  Margin="30,2,5,2">Netto</Label>
+                        <TextBox Grid.Row="9" Grid.Column="1"  Margin="30,2,5,2">1000 €</TextBox>
+
+                        <!-- 13.Gehalt (Urlaubszuschuss)-->
+                        <Label Grid.Row="10" Grid.Column="0" FontWeight="Bold">13.Gehalt (Urlaubszuschuss)</Label>
+
+                        <Label Grid.Row="11" Grid.Column="0" Margin="30,2,5,2">Brutto</Label>
+                        <TextBox Grid.Row="11" Grid.Column="1" Margin="30,2,5,2">1000 €</TextBox>
+
+                        <Label Grid.Row="12" Grid.Column="0"  Margin="30,2,5,2">Sozialversicherung</Label>
+                        <TextBox Grid.Row="12" Grid.Column="1" Margin="30,2,5,2" >1000 €</TextBox>
+
+                        <Label Grid.Row="13" Grid.Column="0"  Margin="30,2,5,2">Lohnsteuer</Label>
+                        <TextBox Grid.Row="13" Grid.Column="1"  Margin="30,2,5,2">1000 €</TextBox>
+
+                        <Label Grid.Row="14" Grid.Column="0"  Margin="30,2,5,2">Netto</Label>
+                        <TextBox Grid.Row="14" Grid.Column="1"  Margin="30,2,5,2">1000 €</TextBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Urlaubsanspruch" />
+                <TabItem Header="Details" />
+            </TabControl>
+
+
+
+        </DockPanel>
+    </Grid>
+</Window>
+
+    
