@@ -56,6 +56,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\ButtonCalculateCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\PersonViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

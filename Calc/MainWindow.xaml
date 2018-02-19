@@ -149,8 +149,8 @@
                         <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold">Jahresbezug</Label>
 
                         <Label Grid.Row="1" Grid.Column="0" Margin="30,2,5,2">Brutto</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="30,2,5,2">1000 €</TextBox>
-
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="30,2,5,2"  Text="{Binding TxtMonthlyPreTaxIncome}"/>
+                        
                         <Label Grid.Row="2" Grid.Column="0"  Margin="30,2,5,2">Sozialversicherung</Label>
                         <TextBox Grid.Row="2" Grid.Column="1" Margin="30,2,5,2" >1000 €</TextBox>
 
