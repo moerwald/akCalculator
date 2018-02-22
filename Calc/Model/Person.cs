@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Calc.Model
 {
     public class Person
     {
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -18,8 +20,13 @@ namespace Calc.Model
 
         public string Address  { get; set; }
 
-
-        public Income ActualMonthlyPreTaxIncome { get; set; } = new Income();
+        public List<Income> Incomes { get; set; } = new List<Income>
+        {
+            new Income { Type = Income.IncomeType.ChristmasBonus },
+            new Income { Type = Income.IncomeType.MonthlyCredit },
+            new Income { Type = Income.IncomeType.VacationBonus },
+            new Income { Type = Income.IncomeType.YearlyIncome },
+        };
     }
 
     public class Income
@@ -47,10 +54,5 @@ namespace Calc.Model
         public decimal IncomeTax { get; set; }
 
         public decimal AfterTaxIncome { get; set; }
-
-
-
-
-
     }
 }
