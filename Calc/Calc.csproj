@@ -58,7 +58,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\ButtonCalculateCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\PersonViewModel.cs" />
@@ -103,6 +102,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CollectiveAgreements\CollectiveAgreements.csproj">
+      <Project>{eba8a4d5-15d0-4eb5-b286-26822b9c5404}</Project>
+      <Name>CollectiveAgreements</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

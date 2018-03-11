@@ -37,25 +37,11 @@ namespace Calc.Command
             }
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return this.canExecute != null && this.canExecute(parameter);
-        }
+        public bool CanExecute(object parameter) => this.canExecute != null && this.canExecute(parameter);
 
-        public void Execute(object parameter)
-        {
-            this.execute(parameter);
-        }
+        public void Execute(object parameter) => this.execute(parameter);
 
-        public void OnCanExecuteChanged()
-        {
-            EventHandler handler = this.CanExecuteChangedInternal;
-            if (handler != null)
-            {
-                //DispatcherHelper.BeginInvokeOnUIThread(() => handler.Invoke(this, EventArgs.Empty));
-                handler.Invoke(this, EventArgs.Empty);
-            }
-        }
+        public void OnCanExecuteChanged() => this.CanExecuteChangedInternal?.Invoke(this, EventArgs.Empty);
 
         public void Destroy()
         {
