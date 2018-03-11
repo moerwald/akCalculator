@@ -8,9 +8,10 @@
      
         mc:Ignorable="d"
         Title="MainWindow" 
-        Width="Auto" Height="auto">
+        Width="Auto" Height="auto"
+        FontSize="14">
     <Window.Resources>
-        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+        <!--<Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="2,5,2,2"/>
         </Style>
@@ -18,7 +19,7 @@
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
-        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"></Style>-->
     </Window.Resources>
 
 
@@ -58,6 +59,9 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -118,13 +122,29 @@
                 <TextBox  Grid.Column="2" Grid.Row="11"  VerticalAlignment="Center" Height="22">0</TextBox>
 
                 <Label  Grid.Column="1" Grid.Row="12" VerticalAlignment="Center">Kollektivvertrag:</Label>
-                <ComboBox Text="Is not open" Grid.Column="1" Grid.Row="12">
-                    <ComboBoxItem Name="cbi1">KV1</ComboBoxItem>
-                    <ComboBoxItem Name="cbi2">KV2</ComboBoxItem>
-                    <ComboBoxItem Name="cbi3">KV3</ComboBoxItem>
+                <ComboBox Text="Is not open" Grid.Column="2" Grid.Row="12">
+                    <ComboBoxItem IsSelected="True">KV1</ComboBoxItem>
+                    <ComboBoxItem >KV2</ComboBoxItem>
+                    <ComboBoxItem >KV3</ComboBoxItem>
                 </ComboBox>
 
-                <Button x:Name="Btn_Calculate" Content="{Binding ButtonContent}" Command="{Binding Calculate}" Grid.Row="13" Grid.Column="1" Margin="5,25,20,2" />
+                <Label  Grid.Column="1" Grid.Row="13" VerticalAlignment="Center">Anstellungsverhältnis:</Label>
+                <ComboBox Grid.Column="2" Grid.Row="13">
+                    <ComboBoxItem IsSelected="True">Angestelle(r)</ComboBoxItem>
+                    <ComboBoxItem >Arbeiter(in)</ComboBoxItem>
+                    <ComboBoxItem >Angestelle(r) durch Vertrag</ComboBoxItem>
+                </ComboBox>
+
+                <Label  Grid.Column="1" Grid.Row="14" VerticalAlignment="Center">Auflösungsmodus:</Label>
+                <ComboBox 
+                    ItemsSource="{Binding AufloesungsModusEnumMitBeschreibung}" 
+                    DisplayMemberPath="Value" 
+                    SelectedValuePath="Key" 
+                    SelectedValue="{Binding CmbAufloesungsModus, Mode=TwoWay}"  
+                    Grid.Column="2" 
+                    Grid.Row="14"/>
+
+                <Button x:Name="Btn_Calculate" Content="{Binding ButtonContent}" Command="{Binding Calculate}" Grid.Row="15" Grid.Column="1" Margin="5,25,20,2" />
             </Grid>
         </Border>
 

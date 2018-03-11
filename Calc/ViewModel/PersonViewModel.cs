@@ -178,6 +178,29 @@ namespace Calc.ViewModel
         public string TxtGivenMonthlyIncome { get; set; } = "0";
 
 
+        #region Auflösungsmodus
+        private AufloesungsModus cmbAufloesungsModus = AufloesungsModus.Dienstgeberkuendigung;
+
+        public AufloesungsModus CmbAufloesungsModus
+        {
+            get { return cmbAufloesungsModus; }
+            set { cmbAufloesungsModus = value; RaisePropertyChangedEvent(nameof(CmbAufloesungsModus)); }
+        }
+
+      
+
+        public Dictionary<AufloesungsModus, string> AufloesungsModusEnumMitBeschreibung { get; } = new Dictionary<AufloesungsModus, string>() 
+                {
+                   {AufloesungsModus.AblaufBefristung, "Ablauf der Befristung"},
+                   {AufloesungsModus.Dienstgeberkuendigung, "Dienstgeberkündigung"},
+                   {AufloesungsModus.Dienstnehmerkuendigung, "Dienstnehmerkündigung" },
+                   {AufloesungsModus.EinvernehmlicheAufloesung, "Einvernehmliche Auflösung" }
+                };
+
+        #endregion
+
+
+
         public string ButtonContent
         {
             get
@@ -225,7 +248,7 @@ namespace Calc.ViewModel
 
                 FillupIncomesFor
                     ("laufender Bezug"
-                    , s =>  this.TxtPreTaxMonthlyIncome = s
+                    , s => this.TxtPreTaxMonthlyIncome = s
                     , s => this.TxtNationalInsuranceMonthlyIncome = s
                     , s => this.TxtIncomeTaxMonthlyIncome = s
                     , s => this.TxtAfterTaxMonthlyIncome = s);
@@ -246,8 +269,8 @@ namespace Calc.ViewModel
                     , s => this.TxtAfterTaxChristmasBonus = s
                     );
 
-                void FillupIncomesFor 
-                    ( string searchString
+                void FillupIncomesFor
+                    (string searchString
                     , Action<string> preTaxIncome
                     , Action<string> nationalInsurance
                     , Action<string> incomeTax
@@ -274,7 +297,7 @@ namespace Calc.ViewModel
                                     }
                                     else if (str.Contains("Sozialversicherung"))
                                     {
-                                        nationalInsurance( decimalValue.ToString());
+                                        nationalInsurance(decimalValue.ToString());
                                     }
                                     else if (str.Contains("Lohnsteuer"))
                                     {

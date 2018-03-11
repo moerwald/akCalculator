@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Calc.Model
 {
+
+
     public class Person
     {
 
@@ -27,6 +29,8 @@ namespace Calc.Model
             new Income { Type = Income.IncomeType.VacationBonus },
             new Income { Type = Income.IncomeType.YearlyIncome },
         };
+
+        public AufloesungsModus Aufloesungsmodus { get; set; }
     }
 
     public class Income
@@ -43,7 +47,6 @@ namespace Calc.Model
 
             VacationBonus
         }
-
 
         public IncomeType Type { get; set; }
 

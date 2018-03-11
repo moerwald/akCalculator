@@ -59,6 +59,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Consts.cs" />
+    <Compile Include="Model\AufloesungsModus.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\PersonViewModel.cs" />
     <Page Include="MainWindow.xaml">
